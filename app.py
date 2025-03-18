@@ -1,6 +1,6 @@
 import base64
 import io
-
+import os
 import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output, State
@@ -308,4 +308,5 @@ def update_charts(json_data, col1, col2):
 
 # ---------- Run the App ---------- #
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    port = int(os.environ.get("PORT", 10000))  # Default to 10000 if PORT isn't set
+    app.run(host='0.0.0.0', port=port, debug=True)
